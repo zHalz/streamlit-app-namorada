@@ -1,60 +1,64 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
 from components.header import render_header
 
-# =========================
-# CONFIG
-# =========================
-st.set_page_config(
-    page_title="Nosso App ❤️",
-    layout="wide"
-)
+st.set_page_config(layout="wide")
 
-# =========================
 # CSS
-# =========================
 def load_css():
     with open("assets/style.css") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 load_css()
 
-# =========================
-# HEADER
-# =========================
-render_header()
+# HEADER + MENU
+selected = render_header()
 
 # =========================
-# MENU
-# =========================
-selected = option_menu(
-    menu_title=None,
-    options=["Home", "Automações", "Especial"],
-    icons=["house", "gear", "heart"],
-    orientation="horizontal"
-)
-
-# =========================
-# HOME
+# HOME (PAINEL)
 # =========================
 if selected == "Home":
-    st.markdown("""
-    <div class="hero">
-        <h1>Nosso Espaço ❤️</h1>
-        <p>Um lugar com tecnologia, carinho e surpresas</p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown("## 📊 Painel de Automação")
 
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown('<div class="card">⚙️ Automações inteligentes</div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+            <h3>📂 Processamentos</h3>
+            <p>Arquivos tratados</p>
+            <h2>12</h2>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
-        st.markdown('<div class="card">📂 Processamento de arquivos</div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+            <h3>⚙️ Automações</h3>
+            <p>Ferramentas disponíveis</p>
+            <h2>3</h2>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col3:
-        st.markdown('<div class="card">❤️ Espaço especial</div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="card">
+            <h3>⏱️ Tempo ganho</h3>
+            <p>Horas economizadas</p>
+            <h2>+5h</h2>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("### 🚀 Acesso rápido")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        if st.button("Ir para Automações"):
+            st.session_state["pagina"] = "Automações"
+
+    with col2:
+        if st.button("Área Especial ❤️"):
+            st.session_state["pagina"] = "Especial"
 
 
 # =========================
@@ -70,9 +74,6 @@ elif selected == "Automações":
 
         if st.button("Processar"):
             st.info("Processando...")
-
-            # 🔥 AQUI você vai plugar seu código real depois
-
             st.success("Arquivo processado!")
 
             st.download_button(
@@ -86,15 +87,14 @@ elif selected == "Automações":
 # ESPECIAL
 # =========================
 elif selected == "Especial":
-    st.title("❤️ Um espaço só nosso")
+    st.title("❤️ Um espaço leve no meio da correria")
 
     st.markdown("""
     <div class="card">
-        <h3>Uma mensagem pra você 💌</h3>
-        <p>Obrigado por estar comigo em todos os momentos</p>
+        <h3>Mensagem do dia 💌</h3>
+        <p>Você está indo muito bem. Continua assim 🚀</p>
     </div>
     """, unsafe_allow_html=True)
 
-    if st.button("Clique aqui 😊"):
+    if st.button("Surpresa 😊"):
         st.balloons()
-        st.success("Você é incrível ❤️")

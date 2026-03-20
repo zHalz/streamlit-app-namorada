@@ -3,39 +3,28 @@
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-/* fundo geral */
-body {
-    background-color: #0e1117;
-}
-
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.hero h1 {
-    font-size: 50px;
+/* LOGO */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
     color: #ff4b6e;
-}
-
-.hero p {
-    font-size: 20px;
-    color: #cfcfcf;
+    padding-top: 10px;
 }
 
 /* CARDS */
 .card {
-    padding: 30px;
-    border-radius: 20px;
+    padding: 25px;
+    border-radius: 15px;
     background: #1c1f26;
     text-align: center;
-    font-size: 18px;
     transition: 0.3s;
-    cursor: pointer;
+}
+
+.card h2 {
+    margin-top: 10px;
+    color: #ff4b6e;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    background: #2a2f3a;
+    transform: translateY(-5px);
 }
