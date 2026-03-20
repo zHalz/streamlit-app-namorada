@@ -1,20 +1,17 @@
-import streamlit as st
+from streamlit_option_menu import option_menu
 
-st.set_page_config(
-    page_title="Nosso App ❤️",
-    layout="wide"
+selected = option_menu(
+    menu_title=None,
+    options=["Home", "Automações", "Especial"],
+    icons=["house", "gear", "heart"],
+    orientation="horizontal"
 )
 
-# carregar css
-def load_css():
-    with open("assets/style.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+if selected == "Home":
+    st.write("Home")
 
-load_css()
+elif selected == "Automações":
+    st.write("Automações")
 
-st.markdown("""
-<div class="hero">
-    <h1>Bem-vinda ❤️</h1>
-    <p>Esse espaço foi feito com carinho pra você</p>
-</div>
-""", unsafe_allow_html=True)
+elif selected == "Especial":
+    st.write("❤️")
